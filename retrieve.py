@@ -29,16 +29,21 @@ async def get_record(session, identifier, max_attempts=5):
             
         try:
             async with session.get(uri, params=params) as response:
-                content = await response.text()
+                content = await response.read()
+                if isinstance(content, bytes):                
+                    content = content.decode("utf-8")
 
         except asyncio.TimeoutError:
             logger.debug(f"asyncio.TimeoutError on {identifier} search (attempt {attempt} of {1 + max_attempts})")
             continue
 
+        except aiohttp.ServerDisconnectedError:
+            logger.debug(f"aiohttp.ServerDisconnectedError on {identifier}")
+
         except:
-            logger.exception(f"Exception occurred on identifier {identifier} ({attempt} of {1 + max_attempts})")
-            continue
-            
+            logger.exception(f"Unexpected exception occurred on identifier {identifier} ({attempt} of {1 + max_attempts})")
+            raise
+        
         else:
             break
     
@@ -155,7 +160,7 @@ if __name__ == "__main__":
 
     async def main():
         
-        response = await get_jan_to_apr(2019)
+        response = await get_jan_to_apr(2017)
         return response
 
         
