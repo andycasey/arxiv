@@ -1,0 +1,10 @@
+name: cenv
+channels:
+  - defaults
+dependencies:
+  - pip
+  - requests
+  - ipython
+  - astropy
+  - pip:
+    - -r requirements.txt
