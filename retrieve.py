@@ -201,19 +201,16 @@ if __name__ == "__main__":
 
     async def main():
 
-        #response = await get_yearly(2018)
-
         concurrency = 10
-        months = None
+        months = {
+            2007: (4, 5, 6, 7, 8, 9, 10, 11, 12),
+            2020: (1, 2, 3, 4)
+        }
 
-        for year in list(range(2008, 2020 + 1)):
-            if year == 2020:
-                months = (1, 2, 3, 4)
-            else:
-                months = None
+        for year in range(2007, 2021):
             response = await get_yearly(
                     year, 
-                    months=months,
+                    months=months.get(year, None),
                     concurrency=concurrency
                 )
 
