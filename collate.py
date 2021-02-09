@@ -75,6 +75,7 @@ def process_record(path, all_authors=True):
     meta.update(
         words_in_abstract=len(meta["abstract"].split(" ")),
         first_10_authors="; ".join([", ".join(author[::-1]) for author in authors[:10]]),
+        all_authors="; ".join([", ".join(author[::-1]) for author in authors]),
         num_categories=len(categories),
         primary_category=primary_category,
         primary_parent_category=primary_category.split(".")[0]
@@ -185,7 +186,12 @@ if __name__ == "__main__":
     v = table[names]
     v.sort("id")
     v.write("metadata.csv")
-    print("done")
+    
+    names.pop('first_10_authors')
+    names.append('all_authors')
+    v2 = table[names]
+    v2.write("metadata-all-authors.csv")
+
     raise a
     table = table[names]
     table.write(

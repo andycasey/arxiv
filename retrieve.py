@@ -163,7 +163,7 @@ if __name__ == "__main__":
 
     submissions = Table.read("arxiv_monthly_submissions.csv")
 
-    max_attempts = 50
+    max_attempts = 5
 
 
     async def get_yearly(year, months=None, concurrency=10):
@@ -204,10 +204,10 @@ if __name__ == "__main__":
         concurrency = 10
         months = {
             2007: (4, 5, 6, 7, 8, 9, 10, 11, 12),
-            2020: (1, 2, 3, 4)
+            #2020: (1, 2, 3, 4)
         }
 
-        for year in range(2007, 2021):
+        for year in range(2008, 2021):
             response = await get_yearly(
                     year, 
                     months=months.get(year, None),
