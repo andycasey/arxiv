@@ -1,18 +1,14 @@
 
-ifmport json
+import json
 
-
-
-def process_record(path):
+def process_record(path, include_authors=False):
 
     with open(path, "r") as fp:
         record = json.load(fp)
 
     meta = record.copy()
 
-
     authors = meta["authors"]
-    meta["num_authors"] = len(authors)
 
     # Category stuff.
     categories = meta["categories"].split(" ")
@@ -20,21 +16,30 @@ def process_record(path):
 
     meta.update(
         words_in_abstract=len(meta["abstract"].split(" ")),
-        first_10_authors="; ".join([", ".join(author[::-1]) for author in authors[:10]]),
-        all_authors="; ".join([", ".join(author[::-1]) for author in authors]),
         num_categories=len(categories),
+        num_authors=len(authors),
         primary_category=primary_category,
-        primary_parent_category=primary_category.split(".")[0]
+        primary_parent_category=primary_category.split(".")[0],
+        first_author=authors[0]
     )
 
-    meta.update(
-        first_author=", ".join(authors[0][::-1]),
-        last_author=", ".join(authors[-1][::-1]),
-    )
+    if include_authors:
+        meta.update(
+            #first_10_authors="; ".join([", ".join(author[::-1]) for author in authors[:10]]),
+            all_authors="; ".join([", ".join(author) for author in authors]),
+            #first_author=", ".join(authors[0][::-1]),
+            #last_author=", ".join(authors[-1][::-1]),
+        )
     
     # Drop unnecessary keys
     drop_keys = (
-        "title", "abstract", "comments", "authors", "doi", "updated", "acm-class",
+        "title", 
+        "abstract", 
+        "comments", 
+        "authors",
+        "doi",
+        "updated",
+        "acm-class",
         "journal-ref",
         "msc-class",
         "proxy",
@@ -54,30 +59,38 @@ if __name__ == "__main__":
     from tqdm import tqdm
     from astropy.table import Table
 
-    DEBUG = False
+    debug = False
+    max_records = None
+    include_authors = True
+    output_records_path = "records.csv"
+    output_authors_path = "authors.json"
 
     paths = glob("records/*/*/*")
 
     rows = []
     failures = []
-    for path in tqdm(paths):
+    for i, path in enumerate(tqdm(paths), start=1):
         try:
-            row = process_record(path)
+            row = process_record(path, include_authors=include_authors)
             
         except:
             failures.append(path)
-            if DEBUG:
+            if debug:
                 raise 
         
         else:
             if row is not None:
                 rows.append(row)
     
+        if max_records is not None and i >= max_records:
+            break
+
     if failures:
         logger.warning(f"Failures on the following paths:")
         for failure in failures:
             logger.warning(f"\t{failure}")
     
+
     # Order the columns because it hurts my autism otherwise.
     names = [
         'id',
@@ -87,24 +100,19 @@ if __name__ == "__main__":
         'num_categories',
         'categories',
         'num_authors',
-        'first_author',
-        'last_author',
-        'first_10_authors',
         'words_in_abstract'
     ]
+    if include_authors:
+        authors = {
+            record["id"]: record["all_authors"].split("; ") for record in records
+        }
 
-    raise a
-    #table = Table(rows=rows)
+        with open(output_authors_path, "w") as fp:
+            fp.write(json.dumps(authors, indent=1))
 
-    #if len(table.dtype.names) > len(names):
-    #    logger.warning(f"Table has more columns than expected: {set(table.dtype.names).diffence(names)}")
-   
-    #v = table[["id", "created", "categories", "num_authors", "first_10_authors", "words_in_abstract"]]
-    v = table[names]
-    v.sort("id")
-    v.write("metadata.csv")
+
+    records = Table(rows=rows, names=names)
+    records.sort("id")
+    records.write(output_records_path)
     
-    names.pop('first_10_authors')
-    names.append('all_authors')
-    v2 = table[names]
-    v2.write("metadata-all-authors.csv")
+    
