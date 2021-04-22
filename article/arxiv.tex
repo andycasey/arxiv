@@ -1,0 +1,165 @@
+\documentclass{nature}
+\bibliographystyle{naturemag}
+
+\usepackage{amssymb}
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+%\usepackage{lineno}
+%\linenumbers
+
+% #magic #hack to make figures appear
+\makeatletter
+\let\saved@includegraphics\includegraphics
+\AtBeginDocument{\let\includegraphics\saved@includegraphics}
+\renewenvironment*{figure}{\@float{figure}}{\end@float}
+\makeatother
+
+
+\usepackage{color}
+\newcommand{\todo}[1]{\textcolor{blue}{#1}}
+\newcommand{\arxiv}{arXiv}
+
+% I don't suggest this title; this is a placeholder.
+\title{What pandemic?}
+
+\author{Andrew R. Casey$^{\ast,1,2,}$,
+        Ilya Mandel$^{\ast,1,2}$,
+        and friends?
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{affiliations}
+	\item School of Physics \& Astronomy, Monash University, Clayton 3800, Victoria, Australia
+	\item Center of Excellence for Astrophysics in Three Dimensions (ASTRO-3D), Australia
+\end{affiliations}
+
+\begin{abstract}
+	% Context.
+	`\emph{Publish or perish}' describes the pressure for academics to publish research to ensure a successful career in academia.
+	% Define the gap, or question.
+	With a global pandemic that has changed how businesses operate, has it also changed the academic publishing system?
+	% Here we show.
+	Here we show that there is almost no change in expected publishing rates due to the COVID-19 pandemic.
+	The exception is biology, where an increase in pre-prints is driven by authors who are not established biologists.
+	% Additional conclusions.
+	Long-term trends over 14 years show that academics are writing more papers, with more co-authors, and those papers are getting longer. 
+	However, the increased quantity does not reflect quality: we find evidence that the level of intellectual contribution needed to warrant co-authorship on a paper has dropped in astronomy, \todo{and elsewhere?}. 
+	We find that more leading and co-author papers in the first few years of an academic's career increases their chances to stay in academia, affirming the `\emph{publish or perish}' mantra, but only to a point: after an early career researcher has published enough papers, their chances of continuing in academia remain flat. At that point, they should stop writing papers and do something else.
+\end{abstract}
+
+
+Peer-reviewed publications are the primary measure of productivity in academia. The \arxiv\ is a distribution service for research publications before they are printed in a journal (i.e., a pre-print). A pre-print on the \arxiv\ does not ensure that the contents have already passed the peer-review process, but most material on the \arxiv\ eventually goes through peer-review because it is now standard in many research fields to post pre-prints to the \arxiv\ either during or after the peer-review process.
+
+
+We retrieved metadata for 1.38 million pre-prints posted on the \arxiv\ between April 2007 and December 2020. The metadata includes the creation date, research field(s), title, author name(s), abstract, and other miscellaneous information. These data show that there is an increasing number of publications each year in nearly every field  (Figure~\ref{fig:number-of-publications-with-time}). Academics are writing more papers, and with more co-authors (Figure~\ref{fig:number-of-authors-with-time}), with a steady decline of single author papers in every field. All papers are getting longer, too: the mean abstract length is increasing, and even the shortest abstracts each year are getting longer (Figure~\ref{fig:abstract-length}). These long-term trends are relatively predictable between years, allowing us to measure changes in academic productivity due to the current pandemic, and variations in authorship networks with time.
+
+
+In most fields there is no impact on pre-print rates due to the COVID-19 pandemic. We used the number of publications from January 2008 to January 2020 to predict the expected number of publications in 2020 in a given field (see Methods). The true number of publications in 2020 agree excellently with the predictions in most fields. The most significant deviation is biology, where 2020 saw \todo{X} pre-prints posted above expected ($X^{X}_{X}$ expected, $Y$ observed). The most frequent terms in the abstracts of those pre-prints relate to the SARS-COV2 disease. 
+
+
+An increase in biology research during a global pandemic is not so surprising. However, the \arxiv\ data suggests that most of these biology pre-prints are not written by established biologists. The number of unique author names with time (Figure~\ref{fig:unique-authors-with-time}) shows that there is a steady increase in the number of uniquely named authors per field. In 2020, that number spiked as many `new' authors began posting biology pre-prints to the \arxiv. It is unlikely that this spike can solely be explained by a sudden burst of research productivity by very large collaborations, newly formed to tackle the impending pandemic. In Figure~\ref{fig:new-authors-with-time} we show the number of authors who first appear on the \arxiv\ with time. Since our data set begins in 2007, there is a sudden influx of author names who first appear, before there is a steady rise in unique authors as new researchers join the field. In quantitative biology, that steady rise turns to a spike in 2020 (Figure~\ref{fig:new-authors-with-time}) as a sudden influx of authors post pre-prints who have never appeared on a biology pre-print until 2020.  This cohort of authors are not established biologists, and many of them did not collaborate with a biologist. In Figure~\ref{fig:papers-entirely-of-new-authors} we show the number of pre-prints where \emph{all} authors on a paper have never appeared before in the literature of that field. The spike in biology pre-prints in 2020 remains present, representing an influx of pre-prints without any biology expertise. Since it is unlikely that the world-wide number of research-trained quantitative biologists increased overnight, we conclude that \todo{half?} of the quantitative biology pre-prints posted in 2020 are authored by researchers trained in other fields.
+
+
+\section*{Longevity and authorship valuation}
+
+%	\item Is this increased quantity of publications, and length of publications, a measure of increased quality of research?
+
+We find that the number of authors on a paper has tended to increase in most fields between 2007 and 2020 (Figure~\ref{fig:number-of-authors-with-time}). These trends have been explained by the increasing complexity of research projects that requires expertise from different areas [REF]. If the increasing collaboration size is entirely due to research expertise, then we would expect that the expanding network size would mostly be reflected in established researchers that are experts in their field. Instead, we find that the minimum amount of work necessary to warrant co-authorship has decreased in some fields, which \todo{mostly} accounts for the increase in collaboration sizes with time.
+
+Consider a motivated PhD supervisor with good intentions. If the supervisor encourages their student to contribute to a paper where the supervisor is already involved (but the supervisor is not leading), then the supervisor will be helping to improve the student's visibility (and perceived productivity) in an already competitive landscape. This is a common scenario in academia: an established researcher will assign some task to a PhD student, and the outcome of that task will contribute to a paper in preparation. As a consequence, both the student and supervisor are rightfully listed as co-authors instead of just the supervisor. If the valuation of `intellectual contribution necessary to warrant publication' remained stable with time, then we should expect that the number of co-author publications that overlap with the PhD supervisor(s) will also remain stable with time.
+
+We identified two cohorts of early career researchers (ECRs) in astronomy that are separated by their career start date by five years (see Methods). The distribution of first-author (leading) publications between these cohorts is indistinguishable (\todo{some metrics}, Figure~\ref{fig:longevity}). The relative number of researchers with \todo{up to 5} co-author publications is also the same between both cohorts, but the more recent cohort has a long-tail of ECRs with \todo{X or more} co-author publications. These researchers would appear to be more productive, and to have a more extensive network of collaborators. When we separate the co-author publications to those that do, or do not, include the inferred PhD supervisor(s), it is clear that the increased number of co-author publications is not due to network expansion: those ECRs are publishing with their PhD supervisors and not independently expanding their network. While it is impossible to reliably identify a causal link here, it would appear that those ECR students with increased co-author publications, that overlap heavily with their supervisors, is perhaps due to the supervisors good intention of helping the student expand their network. While individual intentions are good, the net behavioural effect of this as a research field is that the intellectual merit necessary for publication can decrease on average. 
+
+\todo{Check whether the increased collaboration size is driven by experts being co-authors, or ECRs as being co-authors}
+
+
+The data suggest that those extra publications has little or no impact on an ECR's likelihood of remaining in academia. We identified astronomy ECRs that started between 2010-2012 and separated them into two cohorts: those that continued to publish in astronomy, and those that did not. For every first-author paper written by an ECR in the first \todo{X} years, their likelihood of continuing in academia increased. However, this effect flattens out at \todo{$N \approx 6$}: an ECR with 6 first author publications is just as likely to continue in academia as an ECR with 10 first author publications. A similar effect is seen in co-author publications, although the rate is lower. These two effects are related: an ECR with 10 first-author papers and no co-author papers may look as employable (or un-employable) as an ECR with 10 co-author papers and no first-author papers, but for different reasons. Matching these cohorts with citation, network, and institution metrics would likely reveal a more predictive model for whether an individual ECR will remain in academia. But as a cohort, the probability of continuing in astronomy research flattens out at about 50\%: for astronomy ECRs is the top echelon of productivity, half of them will still leave academia. 
+
+
+
+
+%\begin{itemize}
+%	\item Publish or perish culture to publish more papers per person.
+%	\item There are more and more papers per year in each field.
+%	\item There is a need to network, both for increasing complexity of projects and to expand connections.
+%	\item Single author papers decreasing in every field.
+%	\item Those papers are getting longer, too.
+%	\item Taking abstract length as a proxy for the length of the paper, the abstract length is increasing in every field.
+%	\item Even the 'shortest acceptable' abstract is getting longer per field with time.
+%	\item Is this increased quantity of publications, and length of publications, a measure of increased quality of research?
+%	\item Is increased network a representation of more collaborative nature, or 
+%	\item Authorship currency (need to re-run analysis for all fields and make figures)
+%	\item Longevity analysis
+%	\item Stop publishing after X papers.
+%	\item No apparent change in publication rates due to the pandemic, except:
+%	\item Biology, which seems to be driven from people outside of biology
+%\end{itemize}
+
+% Figures needed:
+% 1. abstract length versus time for all fields
+% 2. number of Nth author papers versus time for all fields
+% - Number of unique authors per field
+% - In biology:
+% 	- number of unique authors with time
+% 	- number of 'new appearing' authors with time
+% 	- number of leading/trailing authors with time
+% - Number of pre-prints posted per field with time (month-long granularity)
+% - Authorship currency histograms, showing distribution of first, nth, nth-with-overlap, nth-without-overlap
+% 	across time in astro-ph, and other fields. 
+% - Likelihood of longevity > X years given number of papers posted in first Y years, in astro-ph and other fields.
+
+
+\section*{References}
+
+\begin{thebibliography}{30}
+%\bibitem{Iben_1967} Iben, I., Jr. Stellar Evolution. VI. Evolution from the Main Sequence to the Red-Giant Branch for Stars of Mass 1 $M_{sun}$, 1.25 $M_{sun}$, and 1.5 $M_{sun}$. \emph{Astrophys. J.} \textbf{147}, 624, doi:10.1086/149040 (1967).
+\end{thebibliography}
+
+\bibliographystyle{naturemag}
+
+
+\begin{addendum}
+\item[Supplementary Information] ~\\Supplementary information is linked to the online version of the paper at www.nature.com/nature.
+\item[Acknowledgements] %\todo{acks}
+ \item[Author Information] Reprints and permissions information is
+   available at www.nature.com/reprints. The authors declare that they
+   have no competing financial interests. Correspondence and requests
+   for materials should be addressed to andrew.casey@monash.edu
+\end{addendum}
+
+\begin{methods}
+
+\section*{Data retrieval}
+
+The \arxiv\ supports a protocol to access metadata for individual pre-prints, given their identifier. An identifier is defined by the year and month that the pre-print was posted, and the number of pre-prints already posted in that month across all fields. We first retrieved the total number of pre-prints posted to the \arxiv\ each month [REF], and used this to generate all possible identifiers. For each identifier we retrieved the title, author name(s), abstract, research field(s), and the date the pre-print was first posted. For pre-prints posted to \arxiv\ prior to 2007, the primary research category is needed to generate the \arxiv\ identifier. Since this is not readily available for all pre-prints, we chose to exclude pre-prints posted earlier than 2007. This data set includes metadata for 1,379,332 pre-prints posted between 2007-03-30 and 2020-12-30, inclusive.
+
+
+\section*{Long-term modelling of pre-print counts}
+
+Use a gaussian process.
+
+
+\section*{Uniquely identifying authors}
+
+The metadata available to us does not include institutional affiliations. In many cases the author names are abbreviated by the submitting author, making it impossible to discern whether `A.~B.~Smith' and `A.~Smith' refer to the same person, even if they are publishing in the same field.
+
+
+
+\section*{Code availability}
+Sure.
+
+\end{methods}
+
+
+%\section*{Additional References}
+%\begin{thebibliography}{1}
+%\bibitem[31]{LAMOST} Luo, A.-L. \emph{et al}. The First Data Release (DR1) of the LAMOST general survey. \emph{Res. Astron. Astrophys.} \textbf{15}, 1095, doi:10.1088/1674-4527/15/8/002 (2015).
+%\end{thebibliography}
+
+\bibliographystyle{naturemag}
+
+
+\end{document}
