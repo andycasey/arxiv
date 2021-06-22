@@ -34,7 +34,7 @@
 \usepackage{setspace}
 
 \usepackage{lineno}
-\linenumbers
+%\linenumbers
 
 \usepackage{amsmath}
 %\usepackage[superscript,biblabel]{cite}
@@ -59,7 +59,7 @@
         Ilya Mandel$^{1,2,3,4}$,
         Prasun K. Ray$^{5}$\\
 \normalsize{$^{1}$School of Physics \& Astronomy, Monash University, Clayton 3800, Victoria, Australia}\\
-\normalsize{$^{2}$Center of Excellence for Astrophysics in Three Dimensions (ASTRO-3D), Australia}\\
+\normalsize{$^{2}$ARC Centre of Excellence for Astrophysics in Three Dimensions (ASTRO-3D), Australia}\\
 \normalsize{$^{3}$OzGrav, Australian Research Council Centre of Excellence}\\
 \normalsize{for Gravitational Wave Discovery, Australia}\\
 \normalsize{$^{4}$Institute of Gravitational Wave Astronomy and School of Physics and Astronomy,}\\
@@ -68,14 +68,6 @@
 }
 
 \renewcommand*{\thefootnote}{\arabic{footnote}}
-
-
-% Outstanding issues to address/close:
-% 1. From Ilya: Since ADS indexes arxiv (at least for astro), is it worth checking the fraction of papers from, say, 3 years ago that have only arXiv numbers (never published)? As well as those which are published in peer-review journals with no arXiv numbers, for completeness in the other direction?
-
-% 2. From Ilya: "All authors new to arXiv vs. at least one author previously on arXiv but all new to q-bio vs. at least one author previously on q-bio vs. all previously on q-bio."
-
-
 
 
 \date{}
@@ -91,7 +83,7 @@
 \noindent \textbf{`\emph{Publish or perish}' is an expression describing the pressure on academics to consistently publish research to ensure a successful career in academia. 
 With a global pandemic that has changed the world, how has it changed academic productivity? 
 Here we show that academics are posting just as many publications on the \arxiv\ pre-print server as if there were no pandemic: 168,630 were posted in 2020, a $\mathbf{+12.6\%}$ change from 2019 and a $\mathbf{+1.4\sigma}$ deviation above the predicted 162,577 $\mathbf{\pm}$ 4,393.
-However, some immediate negative impacts are visible in individual research fields.
+However, some immediate impacts are visible in individual research fields.
 Conference cancellations have led to sharp drops in pre-prints, but laboratory closures have had mixed effects.
 Only some experimental fields show mild declines in outputs, with most being consistent on previous years or even increasing above model expectations.
 The most significant change is a 50\% increase ($\mathbf{+8\sigma}$) in quantitative biology research, all related to the COVID-19 pandemic.
@@ -102,9 +94,7 @@ While quantitative biology pre-prints have returned to pre-pandemic levels, 20\%
 \noindent Peer-reviewed publications are the most common measure of productivity in academia. The \arxiv\cite{Ginsparg:2011} ({https://arxiv.org}) is a distribution service for research publications before they are printed in a journal (i.e., a pre-print). A pre-print on \arxiv\ does not ensure that the contents have passed peer-review, but most material on \arxiv\ eventually goes through peer-review because it is now standard in many research fields to post to \arxiv\ either during or after the peer-review process \cite{Lariviere:2014}. For this reason, the number of pre-prints posted to \arxiv\ approximates the number of peer-reviewed publications written in these fields.
 
 
-Here we make quantitative comparisons on the number of pre-prints posted to \arxiv\ before and during the pandemic. While we investigate the impact that the COVID-19 pandemic has had on different fields of research, we highlight that we are unable to identify or differentiate between authors and communities whose productivity has been significantly harmed by the pandemic, and those who were largely unscathed. The COVID-19 pandemic has impacted the population in unequal ways\cite{Nicola:2020,Chu:2020,Viglione:2020,Gewen:2020,IbnMohammed:2021,King:2021}. Generational inequality, career stage, personal circumstances, carer responsibilities, work environments, places of employment, and many other factors, all significantly contribute to the disproportionate and unequal impact the pandemic may have had on a scientist's capacity to conduct research. 
-%These factors are more important determinants to research capacity than a scientist's field of research. 
-While this limited analysis does not address these issues, it is important to consider that if a community as a whole has not yet demonstrated a significant change in productivity, many researchers have faced significant challenges and suffered physically, mentally, emotionally, and professionally. 
+Here we make quantitative comparisons on the number of pre-prints posted to \arxiv\ before and during the pandemic. While we investigate the impact that the COVID-19 pandemic has had on different fields of research, we highlight that we are unable to identify or differentiate between authors and communities whose productivity has been significantly harmed by the pandemic, and those who were largely unscathed. The COVID-19 pandemic has impacted the population in unequal ways\cite{Nicola:2020,Chu:2020,Viglione:2020,Gewen:2020,IbnMohammed:2021,King:2021}. Generational inequality, career stage, personal circumstances, carer responsibilities, work environments, places of employment, and many other factors, all significantly contribute to the disproportionate and unequal impact the pandemic may have had on a scientist's capacity to conduct research. While this limited analysis does not address these issues, it is important to consider that if a community has not yet demonstrated a significant change in productivity, many researchers have faced significant challenges and suffered physically, mentally, emotionally, and professionally. 
 
 
 We retrieved metadata for 1,475,914 pre-prints posted to \arxiv\ between 1 April 2007 and 31 May 2021. The metadata includes the creation date, research field(s), title, author name(s), abstract, and other miscellaneous information\cite{Clement:2019}. There is an increasing number of pre-prints posted to \arxiv\ each year in nearly every field (Figure~1). These long-term trends are relatively predictable from year to year, allowing us to quantify any change in academic productivity due to the COVID-19 pandemic. We used the number of publications from January 2015 to December 2019 to predict the expected number of monthly pre-prints in each field after January 2020. We modelled the number of monthly pre-prints in each field with a straight line to capture long-term (linear) trends, and used a Gaussian Process with a quasi-periodic kernel function\cite{Rasmussen:2006,Ambikasaran:2014} to capture seasonal variations (Figure~1). In nearly all research fields the number of pre-prints posted since January 2020 agree excellently with the model predictions (Table~1), indicating no collective impact on academic productivity due to the COVID-19 pandemic. The total number of \arxiv\ pre-prints in 2020 across all fields (168,630) exceeds our model predictions ($162{,}577 \pm 4{,}393$; $+1.4\sigma$). 
@@ -150,42 +140,29 @@ We retrieved metadata for 1,475,914 pre-prints posted to \arxiv\ between 1 April
   \end{center}
 \end{table}
 
-Border closures and travel restrictions have forced many academic conferences to be held online-only, or to be cancelled. Hosting conferences online creates a mix of effects, forgoing in-person experiences while eliminating visa issues and disadvantages introduced by travel costs\cite{Guinnessy:2021}. The immediate impact of cancelling a conference is readily apparent in pre-print counts in lattice physics (Figure~1; \arxiv\ subject code \texttt{hep-lat}, see Methods for explanation), where most pre-prints are posted around December each year as conference proceedings from the International Symposium on Lattice Field Theory. In 2020 the conference was cancelled\cite{LatticeConferenceWebsite} and no accompanying pre-prints exist. However, the impact on research from travel restrictions is likely to be much longer than what is represented by the drop in lattice physics pre-prints. Discussions at conferences or collaborative visits frequently spark new research ideas that might lead to a publication many months or years later. 
+Border closures and travel restrictions have forced many academic conferences to be held online-only, or to be cancelled. Hosting conferences online creates a mix of effects, as forgoing in-person experiences benefits those who could not otherwise participate due to visa issues or travel costs\cite{Guinnessy:2021}. The immediate impact of cancelling a conference is readily apparent in pre-print counts in lattice physics (Figure~1; \arxiv\ subject code \texttt{hep-lat}, see Methods for explanation), where most pre-prints are posted around December each year as conference proceedings from the International Symposium on Lattice Field Theory. In 2020 the conference was cancelled\cite{LatticeConferenceWebsite} and no accompanying pre-prints exist. However, the impact on research from travel restrictions is likely to be much longer than what is represented by the drop in lattice physics pre-prints. Discussions at conferences or collaborative visits frequently spark new research ideas that might lead to a publication many months or years later. 
+
 
 Experimental research projects often require specialised laboratories, or data to be collected over many years. The pandemic has forced many laboratories to close or operate with restricted access\cite{PhysicsWorld,ScienceMag}, which could lead to long-lasting delays in ongoing experiments or immediate drops in publication rates in part due to difficulty in accessing completed (or nearly completed) experiment data. There is some evidence of this in pre-print numbers already, with {20\%} fewer pre-prints in high energy physics (\texttt{hep-ex}) in 2020 than expected by our model (observed 615; predicted 818 $\pm$ 94). But declines are not ubiquitous across experimental fields. The closest comparable field of phenomenology in high energy physics (\texttt{hep-ph}) showed no substantial decline. Neither did nuclear experimental research (\texttt{nucl-ex}). And throughout 2020, experimental research in condensed matter (\texttt{cond-mat}) saw a $1.8\sigma$ increase above our model predictions (observed 16,188; predicted 15,325 $\pm$ 492). Segmenting condensed matter pre-prints by research topic shows that most of this increase (in \texttt{cond-mat}) was driven by a 30\% increase in material science pre-prints (\texttt{cond-mat.mtrl-sci}).
-%focussed on laboratory methods and techniques. 
-
-%Despite the COVID-19 pandemic restricting access to essential laboratory equipment, 
-%we speculate that 
-%this shift to publish methods and experimental design work -- which might otherwise be neglected due to ongoing laboratory work -- produced an immediate boost in condensed matter research. This is likely an effect with a limited lifespan: eventually, condensed matter (and other experimental) research will require laboratory access to continue publishing.
-
-%We speculate that this increase relies on experimental data taken prior to 2020, since the COVID-19 pandemic has restricted access to laboratory equipment.
 
 
-The field of quantitative biology (\texttt{q-bio}) research showed the largest increase in pre-prints in 2020 above what is expected by our model. There were {2,790} quantitative biology pre-prints in 2020, {50\%} above the previous year, representing a $+8\sigma$ deviation from our model predictions (predicted 1,914 $\pm$ 109, 876 fewer than observed). This increase is explainable by an increase in COVID-19 related research, as there were 844 quantitative biology pre-prints in 2020 with pandemic-related terms in their title or abstract (see Methods), and just 43 in the decade prior. Indeed, in {April 2020} nearly 60\% of the \arxiv\ pre-prints in quantitative biology were related to the pandemic (Figure~2). Pandemic-related pre-prints also appeared in other fields (computer science, physics, statistics, and quantitative finance, all peaking around {April 2020}), but pandemic-related pre-prints constituted fewer than 10\% of the total pre-prints in these fields. As of mid-2021 the number of monthly pre-prints in quantitative biology has dropped to pre-pandemic levels. Approximately 20\% of current pre-prints in quantitative biology are related to the ongoing pandemic, representing a strong shift in ongoing research focus.
+The field of quantitative biology (\texttt{q-bio}) research showed the largest increase in pre-prints in 2020 above what is expected by our model. There were {2,790} quantitative biology pre-prints in 2020, {50\%} above the previous year, representing a $+8\sigma$ deviation from our model predictions (predicted 1,914 $\pm$ 109, 876 fewer than observed). This increase is explainable by an increase in COVID-19 related research, as there were 864 quantitative biology pre-prints in 2020 with pandemic-related terms in their title or abstract (see Methods), and just 39 in the decade prior. Indeed, in {April 2020} nearly 60\% of the \arxiv\ pre-prints in quantitative biology were related to the pandemic (Figure~2). Pandemic-related pre-prints also appeared in other fields (computer science, physics, statistics, and quantitative finance, all peaking around {April 2020}), but pandemic-related pre-prints constituted fewer than 10\% of the total pre-prints in these fields. As of mid-2021 the number of monthly pre-prints in quantitative biology has dropped to pre-pandemic levels. Approximately 20\% of current pre-prints in quantitative biology are related to the ongoing pandemic, representing a strong shift in ongoing research focus.
  
 \renewcommand{\thefootnote}{$\dagger$} 
  
-An increase in quantitative biology\footnote{Quantitative biology is only a sub-field of biology, and most biology pre-prints are posted to bioRxiv ({https://biorxiv.org}).} research during a global pandemic is unsurprising. 
-However, the question arises if this increase was driven by existing researchers in the field, or by authors from other fields entering \texttt{q-bio} due to the pandemic.
-%However, the \arxiv\ data shows that this increase in pre-prints was not driven by existing researchers posting 50\% more pre-prints than usual. 
-In 2020 there was a peak in the number of new authors appearing for the first time in the quantitative biology literature (Figure~3) while the number of new authors in all other fields remained steady. %The sudden influx of new authors cannot be explained by large ($>$10) newly-formed collaborations working together to tackle the impending pandemic (Figure~4). 
-The increase in pre-prints (and new authors) is driven by small (1-4) groups of authors, where many had never posted pre-prints to quantitative biology before.
+An increase in quantitative biology\footnote{Quantitative biology is only a sub-field of biology, and most biology pre-prints are posted to bioRxiv ({https://biorxiv.org}).} research during a global pandemic is unsurprising. However, the question arises if this increase was driven by existing researchers in the field, or by authors from other fields entering quantitative biology due to the pandemic. In 2020 there was a peak in the number of new authors appearing for the first time in the quantitative biology literature (Figure~3) while the number of new authors in all other fields remained steady. The increase in pre-prints (and new authors) is driven by small (1-4) groups of authors, where many had never posted pre-prints to quantitative biology before.
 
 
-Some of these new authors in quantitative biology have never before appeared in any other \arxiv\ fields, either.
-A close examination of these pre-prints reveals that many are established biologists who have not used the \arxiv\ before, and are now doing so presumably to help ensure that their COVID-19 research is more widely available. This represents a genuine increase in new researchers using the \arxiv, and a boost to making quantitative biology research more widely accessible. Of those new authors in quantitative biology who also appear in other \arxiv\ fields, some of this will be due to name confusion (see Methods): where two researchers in different fields share the same publishing name. However, a careful examination of pandemic-related pre-prints in quantitative biology that were posted in 2020 shows that many were indeed written by researchers from other fields (primarily physicists and mathematicians), who had never before posted about quantitative biology. These pre-prints tend to focus on modelling the COVID-19 outbreak using public data sets, rather than quantitative biology research that requires more expert domain knowledge. 
+Some of these new authors in quantitative biology have never appeared in any other \arxiv\ fields before, either. A close examination of these pre-prints reveals that many are established biologists who have not used the \arxiv\ before and are now doing so presumably to help ensure that their COVID-19 research is more widely available. This represents a genuine increase in new researchers using the \arxiv, and a boost to making quantitative biology research more widely accessible. Of those new authors in quantitative biology who also appear in other \arxiv\ fields, some of this will be due to name confusion (see Methods): where two researchers in different fields share the same publishing name. However, a careful examination of pandemic-related pre-prints in quantitative biology posted in 2020 shows that many were indeed written by researchers from other fields (primarily physicists and mathematicians), who had never posted about quantitative biology. These pre-prints tend to focus on modelling the COVID-19 outbreak using public data sets, rather than quantitative biology research that requires more expert domain knowledge. 
 
 
 
-%The COVID-19 pandemic has had disparate impacts on research productivity in different fields. 
 
-%\todo{Some fields show a drop in research outputs. Few show an increase, either driven by pandemic-related research or by shifts away from experimental research to topics that do not require ongoing laboratory access. }
 
-The COVID-19 pandemic appears to have had minimal impact on collective research productivity to date. 
-Amongst individual fields the largest decline is explainable by a cancelled conference, and the few other drops in pre-prints are statistically insignificant. 
-In this study we have only focussed on the quantity of publications as a measure for productivity, and not their quality. While citations are the most commonly used measure of impact of academic publications, that metric becomes a more biased statistic when many related pre-prints are all being posted nearly at the same time\cite{Fassin:2021}.
-The relatively long timescales of academic research would suggest that the full impact on academic productivity due to the COVID-19 pandemic is yet to be seen. For those fields without a measurable drop in research outputs, it's plausible that many of the pre-prints being posted are research projects that were well underway before the pandemic, with the full impact of academic research yet to be seen.
+The COVID-19 pandemic appears to have had minimal impact on collective research productivity to date. In this study we have only focussed on the quantity of publications as a measure for productivity, and not their quality. While citations are the most used measure of impact of academic publications, that metric becomes a more biased statistic when many related pre-prints are all being posted nearly at the same time\cite{Fassin:2021}. Amongst individual fields the largest decline is explainable by a cancelled conference, and the few other drops in pre-prints are statistically insignificant. It's plausible that many of the pre-prints already posted are research projects that were well underway before the pandemic. The relatively long timescales of academic research would suggest that the full impact on academic productivity due to the COVID-19 pandemic is yet to be seen. The approach applied here will be a useful quantitative approach to return to in subsequent years to explore the longer-term impact of the pandemic.
+
+
+
 
 
 \begin{thebibliography}{10}
@@ -254,7 +231,7 @@ Science Magazine (AAAS). 2021. \emph{Amid pandemic, Energy Department labs close
 \newpage
 
 \begin{center}
-\includegraphics[width=0.95\linewidth]{pre-prints-segmented-by-field}
+\includegraphics[width=0.95\linewidth]{Casey_Figure_1} %pre-prints-segmented-by-field}
 \end{center}
 
 \noindent \textbf{Figure 1:} \textbf{There has been no significant change in monthly \arxiv\ pre-prints (black) since the COVID-19 pandemic began.} The expected number of pre-prints from our Gaussian Process model is shown in red, and the red region shows the uncertainty in that expectation. The dashed light grey line shows predictions from an autoregressive integrated moving average model.
@@ -262,7 +239,7 @@ Science Magazine (AAAS). 2021. \emph{Amid pandemic, Energy Department labs close
 \newpage
 
 \begin{center}
- \includegraphics[width=\linewidth]{pandemic-related-preprints.pdf}
+ \includegraphics[width=\linewidth]{Casey_Figure_2} %pandemic-related-preprints.pdf}
 \end{center}
 
 \noindent \textbf{Figure 2: Pre-prints related to the COVID-19 pandemic peaked in April 2020, accounting for nearly 60\% the quantitative biology (\texttt{q-bio}) pre-prints in that month.} Shown are five other research fields with the highest number of pandemic-related pre-prints in 2020. Monthly pre-prints are shown on the left, and the percent of pandemic-related pre-prints in that research field is shown on the right.
@@ -270,7 +247,7 @@ Science Magazine (AAAS). 2021. \emph{Amid pandemic, Energy Department labs close
 \newpage
 
 \begin{center}
-	\includegraphics[width=0.95\linewidth]{new-authors-segmented-by-field-combined}
+	\includegraphics[width=0.95\linewidth]{Casey_Figure_3} %new-authors-segmented-by-field-combined
 \end{center}
 
 \noindent \textbf{Figure 3:} \textbf{The number of new authors appearing in \arxiv\ pre-prints per month (black) peaked in quantitative biology in 2020.} Here we show new authors since 2010, but we used data since 2007 to determine if an author was new. The slow change in new authors  approximates the net number of new authors joining the field. The number of new authors appearing per number of pre-prints is shown in light blue, with identical limits on the right-hand y-axis. This highlights authorship differences between fields (e.g., \texttt{hep-ex} and \texttt{hep-lat}) for large experiments.
@@ -279,24 +256,8 @@ Science Magazine (AAAS). 2021. \emph{Amid pandemic, Energy Department labs close
 % gr-qc 2013: https://arxiv.org/abs/1304.0670, GW 
 
 
-%\newpage
-
-%\begin{center}
-%     \includegraphics[width=\linewidth]{q-bio-pre-prints-segmented-by-author-count}
-%\end{center}
-
-%\noindent \textbf{Figure 4:} \textbf{The increase in quantitative biology (\texttt{q-bio}) pre-prints in 2020 cannot be attributed to large collaborations.} The coloured regions represent the different author group sizes for quantitative biology pre-prints per month with time.
-
-
 \newpage
 
-%\begin{center}
-%     \includegraphics[width=\linewidth]{winners-and-losers-of-covid}
-%\end{center}
-
-%\noindent \textbf{Figure 5:} \textbf{Mat-sci}
-
-%\newpage
 
 \section*{Methods}
 
@@ -309,20 +270,23 @@ A pre-print's identifier is defined by the year and month that the pre-print was
 
 \subsection*{Long-term modelling of monthly pre-print counts}
 
-We use monthly pre-print counts per primary research field from January 2015 until December 2019 to make predictions for the number of pre-prints expected per month from January 2020 onwards. We use a straight line to model the mean pre-prints over time, and a Gaussian Process with a quasi-periodic kernel covariance function to capture seasonal periodicity\cite{Rasmussen:2006,Ambikasaran:2014}, and a white noise component. We fit the parameters of the mean model and the kernel hyper-parameters simultaneously, but kept the periodicity hyper-parameter fixed to one year. The predictions of the expectation and variance in the number of monthly pre-print counts are conditioned on the optimized hyper-parameters. We fit this model to monthly pre-print counts for every primary research field. These predictions are listed in Table~1. The expected total number of pre-prints, and the uncertainty in that number, are summed from the models used in individual research fields.
+We use monthly pre-print counts per primary research field from January 2015 until December 2019 to make predictions for the number of pre-prints expected per month from January 2020 onwards. We use a straight line to model the mean pre-prints over time, and a Gaussian Process with a quasi-periodic kernel covariance function to capture seasonal periodicity\cite{Rasmussen:2006,Ambikasaran:2014}, and a white noise component. We fit the parameters of the mean model and the kernel hyper-parameters simultaneously, but kept the periodicity hyper-parameter fixed to one year. The predictions of the expectation and variance in the number of monthly pre-print counts are conditioned on the optimized hyper-parameters. We fit this model to monthly pre-print counts for every primary research field. These predictions are listed in Table~1. The expected total number of pre-prints, and the uncertainty in that number, are summed from the models used in individual research fields. 
 
 Our conclusions are reasonably insensitive to the choice of model. As an alternative model we considered an autoregressive integrated moving average (ARIMA) model\cite{BoxJenkins:1970} with seasonal terms ($p=d=q=1$ for the non-seasonal component, and $P=D=Q=1$ with $m=12$ for the seasonal component). The predictions from the ARIMA model agree excellently with the mean predictions from the Gaussian Process model. The largest differences between these models is in \texttt{hep-lat}, where the ARIMA model predicts a higher peak number of pre-prints than the Gaussian Process model. This is not unexpected: the peak height of lattice physics pre-prints has been dropping for the last three years, and this gradual decline is better captured by the Gaussian Process model. If we adopted the ARIMA model then the drop in \texttt{hep-lat} pre-prints would become more significant. Throughout this work we adopt the predictions from the Gaussian Process model, unless otherwise specified.
 
 
+
 \subsection*{Uniquely identifying authors}
 
+The \arxiv\ team has parsed given and family names from author strings for all pre-prints. In general the author names have been appropriately parsed, even given a wide set of input formats. We made only one correction to these parsed names. When the author name was provided in the format of `Family-name First-given-name I.', without any commas, this was interpreted by the \arxiv\ parser such that the family name was `I.' and the given names were `Family-name First-given-name'. We identified situations like this by checking if the parsed family name was just an initial, and if two given names were parsed. In these situations, we correctly ordered the author name.
+
 The \arxiv\ metadata available to us do not include institutional affiliations, or identifiers that would uniquely identify an author. 
-%For these reasons, we have taken steps to minimise the effects of name confusion. 
 There are two primary ways that name confusion could impact our inferences. In the first scenario, two people with the same name are amalgamated and treated as a single author that is on average twice as productive (or more, for very common names) as other authors. In the second scenario, an author will sometimes publish as `A.~B.~Smith', and other times publish as `A.~Smith'. A careful exploration of the data shows that this is a very frequent scenario, and if left uncorrected, would appear as many `unique' authors with half as many publications on average.
 
 We have taken a simple approach to address name confusion. We first define a unique author by family name and the initial of the first given name (`Family-name, I.'), such that we intentionally group together authors that may share the same initial of their first given name. 
-While our approach to name confusion is grossly simple, it is unlikely that these choices have any substantial impact on our inferences. In general this errs on the side of name conflation and over-productivity, except for the relatively rare authors who change their last names over their career.
-Any common name is likely to appear in the literature early in the data set, and will not impact the conclusions we draw about how publishing changed in 2020. 
+While our approach to name confusion is grossly simple, it is unlikely that these choices have any substantial impact on our inferences. In general, this errs on the side of name conflation and over-productivity, except for the relatively rare authors who change their last names over their career.
+Any common name is likely to appear in the literature early in the data set and will not impact the conclusions we draw about how publishing changed in 2020. Indeed, we re-produced the analysis and figures in this paper by taking all initials given and it made no change to our conclusions. This is due, in part, because most authors do not provide middle initials.
+
 
 \subsection*{Pre-prints related to the COVID-19 pandemic}
 
