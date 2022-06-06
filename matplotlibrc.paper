@@ -1,0 +1,22 @@
+#figure.figsize: 10.0, 10.0
+#figure.%dpi: 300
+
+# Lines
+lines.linewidth : 1.7
+lines.antialiased : True
+
+# Patches
+patch.linewidth : 2.0
+patch.facecolor : 348ABD
+patch.edgecolor : CCCCCC
+patch.antialiased : True
+
+# images
+image.origin : upper
+
+# Font
+font.size : 12.0
+text.usetex : True
+text.latex.preamble : \usepackage{amsmath}
+text.latex.preview : True
+axes.unicode_minus : False

@@ -1,0 +1,17 @@
+name: covid
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - pip
+  - requests
+  - ipython
+  - astropy
+  - george
+  - numpy 
+  - scipy
+  - matplotlib
+  - tqdm
+  - statsmodels
+  - pip:
+    - -r requirements.txt
