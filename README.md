@@ -5,9 +5,9 @@ Impact of the COVID-19 pandemic on academic productivity
 Software environment
 --------------------
 
-To reproduce this work you will need to create a Conda environment that has the requisite Python packages.
+To reproduce this work you will need to create a [Conda](https://docs.conda.io/) environment that has the requisite Python packages.
 
-First, make sure you have Conda installed. Then clone this repository and create the environment:
+First, make sure you have [Conda](https://docs.conda.io/) installed. Then clone this repository and create the environment:
 ```
 git clone git@github.com:andycasey/arxiv.git
 cd arxiv/
