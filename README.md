@@ -49,3 +49,5 @@ The following scripts will create the figures in the paper:
 - Figure 3: `plot-new-authors-segmented-by-field.py`: will create `article/new-authors-segmented-by-field-combined.pdf`
 
 The predicted number of articles per field (Table 1 in the paper) is printed by the `plot-pre-prints-segmented-by-field.py` script, which is also used to create Figure 1.
+
+The main article file is `article/ms.tex`, which compiles to `article/ms.pdf`.
