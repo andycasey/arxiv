@@ -1,3 +1,5 @@
+Impact of the COVID-19 pandemic on academic productivity
+========================================================
 
 
 Software environment
@@ -23,7 +25,7 @@ Retrieving the data
 The data used in this work has been uploaded to Zenodo as . You can reproduce this work by downloading the contents of that Zenodo package and extracting it to the `data/` folder in this repository.
 
 Here we describe how those data were collected. 
-We used the (arXiv Dataset)[https://www.kaggle.com/datasets/Cornell-University/arxiv] hosted by Kaggle, which contains metadata of over 1.7M scholarly papers. 
+We used the [arXiv dataset](https://www.kaggle.com/datasets/Cornell-University/arxiv) hosted by Kaggle, which contains metadata of over 1.7M scholarly papers. 
 This dataset is a JSON file (named `arxiv-metadata-oai-snapshot.json`) compressed into a zip file.
 Decompress this file and store it in the `data` directory as `data/arxiv-metadata-oai-snapshot.json`.
 Each row describes an arXiv preprint. 
