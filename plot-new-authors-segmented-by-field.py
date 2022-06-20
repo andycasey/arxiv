@@ -24,7 +24,7 @@ else:
 bins = np.arange(2007, max(records["created_decimal_year"]) + 1/12, 1/12)
 
 xlim = (bins[0], bins[-1])
-xlim = (2010, bins[-1])
+xlim = (2017, 2023)
 
 
 def get_new_authors(arxiv_ids, authors, callback=None):
@@ -269,7 +269,7 @@ for ppc, y, z in data_new_authors:
         *pad_edges(bins[idx:], y[idx:]),
         drawstyle="steps-mid",
         c="k",
-        alpha=0.5,
+        alpha=0.75,
         zorder=100
     )
     tax.set_xlim(*xlim)

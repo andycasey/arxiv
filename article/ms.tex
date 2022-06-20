@@ -20,6 +20,10 @@
 \usepackage[normalem]{ulem}
 \newcommand{\del}[1]{\textcolor{red}{\sout{#1}}}
 \newcommand{\add}[1]{\textcolor{blue}{#1}}
+\newcommand{\todo}[1]{\textcolor{green}{#1}}
+
+%\newcommand{\del}[1]{}
+%\newcommand{\add}[1]{#1}
 
 \begin{document}
 
@@ -51,12 +55,12 @@ $^5$Department of Mathematics, Imperial College London, London, United Kingdom
 \begin{abstract}
 `Publish or perish’ is an expression describing the pressure on academics to consistently publish research to ensure a successful career in academia. 
 With a global pandemic that has changed the world, how has it changed academic productivity? 
-Here we show that academics are posting more papers on the arXiv pre-print server than would be expected had the pandemic not occurred: 168,630 were posted in 2020, a +12.6\% change from 2019 and $+1.4\sigma$ deviation above the 162,577 predicted by our Gaussian process model. We find that that most individual fields were not measurably affected by the pandemic.
-However, we do observe \add{a significant and ongoing decline in physics pre-prints, as well as temporary declines}
-\del{large declines in output} in areas of high-energy physics, where laboratory closures and the cancellation of a key conference have played important roles. 
-The most significant increase occurred \add{during 2020} in quantitative biology where a 50\%~increase ($+8\sigma$) in pre-prints was driven by research related to the COVID-19 pandemic.
+Here we show that academics are posting more papers on the arXiv pre-print server than would be expected had the pandemic not occurred: 341,474 pre-prints were posted between 2020-2021, up 14\% from 2019 and above the predictions of our Gaussian process model.
+%168,630 were posted in 2020 , a +12.6\% change from 2019 and $+1.4\sigma$ deviation above the 162,577 predicted by our Gaussian process model. % todo: reword
+We find that that most individual fields were not measurably affected by the pandemic.
+However, we do observe a significant ongoing decline in physics pre-prints, as well as temporary declines in areas of high-energy physics, where the cancellation of a key conference played a key role.
+The most significant increase occurred in quantitative biology where a 50\%~increase ($+8\sigma$) in pre-prints posted in 2020 was driven by research related to the COVID-19 pandemic. 
 Some of these `COVID papers' are by biologists using arXiv for the first time, but many are written by researchers from other fields (e.g., physicists, mathematicians). 
-\del{As of mid-2021, quantitative biology pre-prints have returned to pre-pandemic levels, but 20\% of the research in this field is now related to the COVID-19 pandemic, demonstrating a strong shift in research focus.}
 \end{abstract}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -70,30 +74,47 @@ Some of these `COVID papers' are by biologists using arXiv for the first time, b
 
 Here we make quantitative comparisons on the number of pre-prints posted to \arxiv\ before and during the pandemic. It is important to recognise that the pandemic has affected both the general population\cite{Nicola:2020,Chu:2020,IbnMohammed:2021} and scientific community\cite{Viglione:2020,Gewen:2020,King:2021} in complex and unequal ways. Scientists have faced substantial challenges driven by a large number of factors including: generational inequality, carer responsibilities, modified work environments, and other personal and professional circumstances. Our analysis does not directly consider these important factors, nor does it account for groups or individuals disproportionately affected by the pandemic. We have instead adopted a broad perspective and present new quantitative results for entire scientific fields. The aim is to provide a “large-scale” view of scientific productivity which will serve as a foundation for future studies on the detailed impacts of COVID-19 on academic work.
 
-We retrieved metadata for 1,660,423 pre-prints posted to \arxiv\ between 1 April 2007 and 31 May 2022. The metadata includes the creation date, research field(s), title, author name(s), abstract, and other miscellaneous information\cite{Clement:2019}. There is an increasing number of pre-prints posted to \arxiv\ each year in nearly every field (Figure~\ref{fig:1}). These long-term trends are relatively predictable from year to year, allowing us to quantify any change in academic productivity due to the COVID-19 pandemic. We used the number of publications from January 2015 to December 2019 to train a predictive Gaussian process model\cite{Rasmussen:2006}. This model treats the number of monthly pre-prints in a research field as a sequence of normally distributed random variables. The expected number of pre-prints was assumed to increase linearly with time, and a quasi-periodic kernel function\cite{Rasmussen:2006,Ambikasaran:2014} was used to capture seasonal variations (Figure~\ref{fig:1}). In nearly all research fields, the number of pre-prints posted since January 2020 agree closely with the model predictions (Table~1) indicating no meaningful collective impact on academic productivity due to the COVID-19 pandemic. In fact, the total number of \arxiv\ pre-prints in 2020 across all fields (168,630) exceeds our model predictions ($162{,}577 \pm 4{,}393$; $+1.4\sigma$). 
+We retrieved metadata for 1,660,423 pre-prints posted to \arxiv\ between 1 April 2007 and 31 May 2022. The metadata includes the creation date, research field(s), title, author name(s), abstract, and other miscellaneous information\cite{Clement:2019}. There is an increasing number of pre-prints posted to \arxiv\ each year in nearly every field (Figure~\ref{fig:1}). These long-term trends are relatively predictable from year to year, allowing us to quantify any change in academic productivity due to the COVID-19 pandemic. \add{The number of pre-prints posted varies substantially by category. Computer science (\texttt{cs}) is the growing the fastest with more than 5,000 pre-prints per month, followed by math (\texttt{math}) with about 3,500 per month. For contrast, only $\approx$200 pre-prints are posted each month quantitative biology (\texttt{q-bio}), and just $\approx$40 in nuclear experimental physics (\texttt{nucl-ex}). For this reason, we model the number of monthly pre-prints in each research field separately.} We used the number of publications from January 2015 to December 2019 to train a predictive Gaussian process model\cite{Rasmussen:2006}. This model treats the number of monthly pre-prints in a research field as a sequence of normally distributed random variables. The expected number of pre-prints was assumed to increase linearly with time, and a quasi-periodic kernel function\cite{Rasmussen:2006,Ambikasaran:2014} was used to capture seasonal variations (Figure~\ref{fig:1}). In nearly all research fields, the number of pre-prints posted since January 2020 agree closely with the model predictions (Table~1) indicating no significant overall decline in academic productivity due to the COVID-19 pandemic. %In fact, the total number of \arxiv\ pre-prints in 2020 across all fields (168,630) exceeds our model predictions ($162{,}577 \pm 4{,}393$; $+1.4\sigma$).  % todo
+
+\add{The exception is physics (\texttt{physics}), which shows the largest decline in pre-prints by number since the pandemic began. In 2020 the number posted to physics actually exceeded our model predictions (15,242 compared to 14,746) by $1\sigma$, driven by a short peak of pre-prints posted to Physics and Society (\texttt{physics.soc-ph}) in early 2020. When we segment the number of pre-prints posted to physics by their sub-category we find that Computational Physics (\texttt{physics.comp-ph}) and Applied Physics (\texttt{physics.app-ph}) had significant drops in pre-print counts since the pandemic began. All other physics sub-categories remained largely stable with time. The category of mathetmatical physics (\texttt{math-ph}) also showed a decline in pre-prints since the pandemic began, but this category has about an order of magnitude fewer pre-prints posted than physics. The mathematical physics category does not have defined sub-categories, making it more difficult to evaluate whether this decline occurred in particular areas of study}.
+
+
+Experimental research projects often require specialised laboratories, or data to be collected over many years. The pandemic has forced many laboratories to close or operate with restricted access\cite{PhysicsWorld,ScienceMag,Castelvecchi}, which could lead to long-lasting delays in ongoing experiments or immediate drops in publication rates in part due to difficulty in accessing completed (or nearly completed) experiment data. \add{This could explain why there are declines in pre-prints in some sub-categories (e.g., Applied Physics), but there is not significant evidence of this in pre-print numbers of experimental-only fields (e.g., \texttt{hep-ex} or \texttt{nucl-ex}). In those fields the model predictions agree reasonably well with the pre-prints since 2020.}
+
 
 
 
 \begin{figure}[!h]
 \includegraphics[width=0.95\linewidth]{pre-prints-segmented-by-field}
-\caption{There has been no significant change in monthly \arxiv\ pre-prints (black) since the COVID-19 pandemic began. The expected number of pre-prints from our Gaussian Process model is shown in red, and the red region shows the uncertainty in that expectation. The dashed light grey line shows predictions from an autoregressive integrated moving average model.}
+\caption{There has been no significant change in monthly \arxiv\ pre-prints (black) since the COVID-19 pandemic began. The expected number of pre-prints from our Gaussian Process model is shown in red, and the red region shows the uncertainty in that expectation. The blue line shows predictions from an autoregressive integrated moving average model.}
 \label{fig:1}
 \end{figure}
 
 
 
-Border closures and travel restrictions forced many academic conferences to be held online-only, or to be cancelled. Hosting conferences online creates a mix of effects, as forgoing in-person experiences benefits those who could not otherwise participate due to visa issues or travel costs\cite{Guinnessy:2021}. The immediate impact of cancelling a conference is readily apparent in pre-print counts in lattice physics (Figure~\ref{fig:1}; \arxiv\ subject code \texttt{hep-lat}, see Methods for explanation), where most pre-prints are posted around December each year as conference proceedings from the International Symposium on Lattice Field Theory. In 2020 the conference was cancelled\cite{LatticeConferenceWebsite}, and no accompanying pre-prints exist. \add{The conference was held in 2021, but t}\del{T}he impact of conference cancellations and travel restrictions on academic research is likely to extend well beyond the output of a single field in a particular year, since discussions at conferences spark new research ideas and collaborations that can lead to publications many months or years later\cite{Wang:2017}.
+Border closures and travel restrictions forced many academic conferences to be held online-only, or to be cancelled. Hosting conferences online creates a mix of effects, as forgoing in-person experiences benefits those who could not otherwise participate due to visa issues or travel costs\cite{Guinnessy:2021}. The immediate impact of cancelling a conference is readily apparent in pre-print counts in lattice physics (Figure~\ref{fig:1}; \arxiv\ subject code \texttt{hep-lat}, see Methods), where most pre-prints are posted around December each year as conference proceedings from the International Symposium on Lattice Field Theory. In 2020 the conference was cancelled\cite{LatticeConferenceWebsite}, and no accompanying pre-prints exist. The conference was held in 2021 with nearly twice the number of corresponding authors than the 2019 conference\cite{LatticeConferenceWebsite2019,LatticeConferenceWebsite2021} (634 compared to 303), but the impact of conference cancellations and travel restrictions on academic research is likely to extend well beyond the output of a single field in a particular year, since discussions at conferences spark new research ideas and collaborations that can lead to publications many months or years later\cite{Wang:2017}.
 
 
-Experimental research projects often require specialised laboratories, or data to be collected over many years. The pandemic has forced many laboratories to close or operate with restricted access\cite{PhysicsWorld,ScienceMag,Castelvecchi}, which could lead to long-lasting delays in ongoing experiments or immediate drops in publication rates in part due to difficulty in accessing completed (or nearly completed) experiment data. \del{There is some evidence of this in pre-print numbers, with {20\%} fewer pre-prints in high energy physics (\texttt{hep-ex}) in 2020 than expected by our model (observed 615; predicted 818 $\pm$ 94)}
-\add{The number of pre-prints posted to \arxiv\ in the \texttt{physics} category spiked early in 2020, but the total number of physics pre-prints posted that year was only $1\sigma$ higher than the prediction from our model, because this spike was counter-balanced by a decline in the second half of 2020. This decline has steadily continued throughout 2021 and 2022, with physics showing the most significant decline in pre-prints since the pandemic began.}
-But declines are not ubiquitous across all experimental fields. The closest comparable field of phenomenology in high energy physics (\texttt{hep-ph}) showed no substantial decline. Neither did nuclear experimental research (\texttt{nucl-ex}). And throughout 2020, research in condensed matter (\texttt{cond-mat}) saw a $1.8\sigma$ increase above our model predictions (observed 16,188; predicted 15,325 $\pm$ 492). 
-Segmenting condensed matter pre-prints by research topic shows that most of this increase (in \texttt{cond-mat}) was driven by a 30\% increase in material science pre-prints (\texttt{cond-mat.mtrl-sci}).
+%Throughout 2020, research in condensed matter (\texttt{cond-mat}) saw a $1.8\sigma$ increase above our model predictions (observed 16,188; predicted 15,325 $\pm$ 492). % todo: update for context of 2021
+%Segmenting condensed matter pre-prints by research topic shows that most of this increase (in \texttt{cond-mat}) was driven by a 30\% increase in material science pre-prints (\texttt{cond-mat.mtrl-sci}). % todo:
+
+
+%del{There is some evidence of this in pre-print numbers, with {20\%} fewer pre-prints in high energy physics (\texttt{hep-ex}) in 2020 than expected by our model (observed 615; predicted 818 $\pm$ 94)}
+%\add{The number of pre-prints posted to \arxiv\ in the \texttt{physics} category spiked early in 2020, but the total number of physics pre-prints posted that year was only $1\sigma$ higher than the prediction from our model, because this spike was counter-balanced by a decline in the second half of 2020. This decline has steadily continued throughout 2021 and 2022, with physics showing the most significant decline in pre-prints since the pandemic began.}
+
+%But declines are not ubiquitous across all experimental fields. The closest comparable field of phenomenology in high energy physics (\texttt{hep-ph}) showed no substantial decline. Neither did nuclear experimental research (\texttt{nucl-ex}). 
+
+
+\begin{figure}[!t]
+\includegraphics[width=0.95\linewidth]{physics-pre-prints}
+\caption{\add{The number of pre-prints posted to \arxiv\ in the categories of Computational Physics (\texttt{physics.comp-ph}) and Applied Physics (\texttt{physics.app-ph}). The decline in physics pre-prints since the pandemic began (Figure~\ref{fig:1}) is largely explained by the drop in pre-prints in Computational Physics and Applied Physics.}}
+\label{fig:physics}
+\end{figure}
 
 
 
-
-The field of quantitative biology (\texttt{q-bio}) showed the largest increase in pre-prints in 2020 above what is expected by our model. There were {2,790} quantitative biology pre-prints in 2020, {50\%} above the previous year, representing a $+8\sigma$ deviation from our model predictions (predicted 1,914 $\pm$ 109; 876 fewer than observed). This increase is explainable by an increase in COVID-19 related research, as there were 864 quantitative biology pre-prints in 2020 with pandemic-related terms in their title or abstract (see Methods), and just 39 in the decade prior. Indeed, in {April 2020} nearly 60\% of the \arxiv\ pre-prints in quantitative biology were related to the pandemic (Figure~\ref{fig:2}). Pandemic-related pre-prints also appeared in other fields (computer science, physics, statistics, and quantitative finance, all peaking around {April 2020}), but these papers constituted fewer than 10\% of the total pre-prints in these fields. As of mid-2021 the number of monthly pre-prints in quantitative biology has dropped to pre-pandemic levels. Approximately 10--15\% of current pre-prints in quantitative biology are related to the ongoing pandemic.\del{, representing a strong shift in ongoing research focus.} \add{This represents a strong shift in research focus, but this fraction is declining with time.}
+The field of quantitative biology (\texttt{q-bio}) showed the largest increase in pre-prints in 2020 above what is expected by our model, before returning to pre-pandemic levels in mid-2021. % todo: 
+There were {2,790} quantitative biology pre-prints in 2020, {50\%} above the previous year, representing a $+8\sigma$ deviation from our model predictions (predicted 1,914 $\pm$ 109; 876 fewer than observed). This increase is explainable by an increase in COVID-19 related research, as there were 864 quantitative biology pre-prints in 2020 with pandemic-related terms in their title or abstract (see Methods), and just 39 in the decade prior. Indeed, in {April 2020} nearly 60\% of the \arxiv\ pre-prints in quantitative biology were related to the pandemic (Figure~\ref{fig:2}). Pandemic-related pre-prints also appeared in other fields (computer science, physics, statistics, and quantitative finance, all peaking around {April 2020}), but these papers constituted fewer than 10\% of the total pre-prints in these fields. Approximately 10--15\% of current pre-prints in quantitative biology are related to the ongoing pandemic.This represents a strong shift in research focus, but this fraction is declining with time. % todo:
 
 
 \begin{figure}
@@ -141,62 +162,72 @@ One quarter of the excess pre-prints posted to quantitative biology during 2020 
 % ('economics', 16),
 % close examination of a random sample of 50 of these "new" authors and their academic affiliations found x to be established biologists who had not used the arXiv before while the rest were researchers from other fields (primarily physics and mathematics) who had not previously posted quantitative biology papers to the arXiv.
 
+\newcommand{\totalcell}[1]{\cellcolor{gray!25}\textbf{#1}}
 
 \begin{table}
-       \caption{The number of \arxiv\ pre-prints per primary research field in 2020 compared to 2019, and model predictions (see Methods).}
+       \caption{The number of \arxiv\ pre-prints per primary research field in 2020 and 2021, the percent change relative to 2019, predicted number of pre-prints using pre-pandemic data (see Methods), and the statistical significance between the predicted number and actual number of pre-prints.}
 \begin{center}
 \small
     \label{tab:table1}
-    \begin{tabular}{|c|l|c|c|c|c|} 
+    \begin{tabular}{|c|cccc|cccc|} 
     \hline
-    	\arxiv\ & Field of research & Pre-prints & Yearly & Predicted & Significance \\
-	code &&(2020)& change (\%)&(2020)& ($\sigma$)\\
-      \hline
-\texttt{astro-ph}    & Astrophysics           & 14,893    & $ +3.4$ & 14,990 $\pm$ 653      & $-0.1$ \\
-\texttt{cond-mat}    & Condensed Matter       & 16,188    & $ +7.0$ & 15,325 $\pm$ 492      & $+1.8$ \\
-\texttt{cs      }    & Computer Science       & 54,808    & $+24.3$ & 51,673 $\pm$ 4,047    & $+0.8$ \\
-\texttt{gr-qc   }    & General Relativity and & 3,405     & $+12.4$ & 3,166 $\pm$ 154       & $+1.6$ \\
-					 & Quantum Cosmology      &&&&\\
-\texttt{hep-ex  }    & High Energy Physics    & 615       & $-19.8$ & 818 $\pm$ 94          & $-2.2$ \\
-                     & (Experiment)           &&&&\\
-\texttt{hep-lat }    & High Energy Physics    & 394       & $-19.3$ & 475 $\pm$ 170         & $-0.5$ \\
-                     & (Lattice)              &&&&\\
-\texttt{hep-ph  }    & High Energy Physics    & 4,586     & $ +1.3$ & 4,615 $\pm$ 329       & $-0.1$ \\
-                     & (Phenomenology)        &&&&\\
-\texttt{hep-th  }    & High Energy Physics    & 3,869     & $ +0.9$ & 4,000 $\pm$ 291       & $-0.4$ \\
-                     & (Theory)               &&&&\\
-\texttt{math    }    & Mathematics            & 35,367    & $ +5.5$ & 35,362 $\pm$ 1,177    & $+0.0$ \\
-\texttt{math-ph }    & Mathematical Physics   & 1,378     & $ -6.3$ & 1,460 $\pm$ 95        & $-0.9$ \\
-\texttt{nlin    }    & Nonlinear Sciences     & 885       & $ +6.1$ & 822 $\pm$ 63          & $+1.0$ \\
-\texttt{nucl-ex }    & Nuclear Experiment     & 499       & $ +2.9$ & 490 $\pm$ 61          & $+0.1$ \\
-\texttt{nucl-th }    & Nuclear Theory         & 1,212     & $ -3.2$ & 1,234 $\pm$ 111       & $-0.2$ \\
-\texttt{physics }    & Physics                & 15,241    & $+14.3$ & 14,746 $\pm$ 506      & $+1.0$ \\
-\texttt{q-bio   }    & Quantitative Biology   & 2,790     & $+49.0$ & 1,914 $\pm$ 109       & $+8.0$ \\
-\texttt{q-fin   }    & Quantitative Finance   & 979       & $+23.1$ & 805 $\pm$ 55          & $+3.2$ \\
-\texttt{quant-ph}    & Quantum Physics        & 6,341     & $+13.4$ & 5,858 $\pm$ 266       & $+1.8$ \\
-\texttt{stat    }    & Statistics             & 5,180     & $+20.2$ & 4,824 $\pm$ 490       & $+0.7$ \\
+\arxiv\ & \multicolumn{4}{c|}{2020}  & \multicolumn{4}{c|}{2021} \\
+primary & Actual & Change & Predicted & Sig. & Actual & Change & Predicted & Sig.  \\
+category	& & (\%) &  &  $(\sigma)$ & & (\%) &  & $(\sigma)$ \\
+%code &  &            & change (\%)&       & ($\sigma$)   &            & change (\%) &      & ($\sigma$) \\
 \hline
-&\cellcolor{gray!25}\textbf{Total} & \cellcolor{gray!25}$\mathbf{168{,}630}$ & \cellcolor{gray!25}$\mathbf{+12.6}$ & \cellcolor{gray!25}$\mathbf{162{,}577 \pm 4{,}393}$ \cellcolor{gray!25}& \cellcolor{gray!25}$\mathbf{+1.4}$ \\
+astro-ph &  14,894 &  +3.4 &  14,990       & -0.1 &  14,388 &  -0.2 &  15,544        & -1.4 \\
+%&         &       &  $\pm$   653 &      &         &       &   $\pm$   857 &      \\                
+cond-mat &  16,187 &  +7.0 &  15,325       & +1.8 &  16,230 &  +7.3 &  15,561        & +1.0 \\
+%&         &       &  $\pm$   492 &      &         &       &   $\pm$   644 &      \\                
+cs &  54,802 & +24.3 &  51,669       & +0.8 &  61,396 & +39.3 &  59,433        & +0.3 \\
+%&         &       &  $\pm$ 4,047 &      &         &       &   $\pm$ 5,698 &      \\                        
+gr-qc &   3,404 & +12.3 &   3,166       & +1.5 &   3,521 & +16.2 &   3,316        & +1.0 \\
+%&         &       &  $\pm$   154 &      &         &       &   $\pm$   201 &      \\                    
+hep-ex &     615 & -19.8 &     818       & -2.2 &     828 &  +8.0 &     813        & +0.1 \\
+%&         &       &  $\pm$    94 &      &         &       &   $\pm$   123 &      \\                    
+hep-lat &     394 & -19.3 &     475       & -0.5 &     690 & +41.4 &     452        & +1.1 \\
+%&         &       &  $\pm$   170 &      &         &       &   $\pm$   222 &      \\                
+hep-ph &   4,585 &  +1.2 &   4,615       & -0.1 &   5,045 & +11.4 &   4,650        & +0.9 \\
+%&         &       &  $\pm$   329 &      &         &       &   $\pm$   428 &      \\                    
+hep-th &   3,870 &  +1.0 &   4,000       & -0.4 &   3,786 &  -1.2 &   4,163        & -1.0 \\
+%&         &       &  $\pm$   291 &      &         &       &   $\pm$   379 &      \\                    
+math &  35,367 &  +5.5 &  35,362       & +0.0 &  34,406 &  +2.6 &  37,091        & -1.6 \\
+%&         &       &  $\pm$ 1,177 &      &         &       &   $\pm$ 1,640 &      \\                    
+math-ph &   1,378 &  -6.3 &   1,460       & -0.9 &   1,117 & -24.0 &   1,468        & -2.8 \\
+%&         &       &  $\pm$    95 &      &         &       &   $\pm$   124 &      \\                
+nlin &     885 &  +6.1 &     822       & +1.0 &     787 &  -5.6 &     831        & -0.5 \\
+%&         &       &  $\pm$    63 &      &         &       &   $\pm$    82 &      \\                    
+nucl-ex &     499 &  +2.9 &     490       & +0.1 &     414 & -14.6 &     499        & -1.1 \\
+%&         &       &  $\pm$    61 &      &         &       &   $\pm$    79 &      \\                
+nucl-th &   1,212 &  -3.2 &   1,234       & -0.2 &   1,128 &  -9.9 &   1,223        & -0.7 \\
+%&         &       &  $\pm$   111 &      &         &       &   $\pm$   144 &      \\                
+physics &  15,242 & +14.3 &  14,746       & +1.0 &  13,917 &  +4.3 &  16,070        & -2.8 \\
+%&         &       &  $\pm$   506 &      &         &       &   $\pm$   776 &      \\                
+q-bio &   2,790 & +49.0 &   1,914       & +8.0 &   2,092 & +11.8 &   1,984        & +0.8 \\
+%&         &       &  $\pm$   109 &      &         &       &   $\pm$   142 &      \\                    
+q-fin &     979 & +23.1 &     805       & +3.2 &     850 &  +6.9 &     837        & +0.2 \\
+%&         &       &  $\pm$    55 &      &         &       &   $\pm$    71 &      \\                    
+quant-ph &   6,342 & +13.5 &   5,859       & +1.8 &   7,378 & +32.0 &   6,170        & +3.5 \\
+%&         &       &  $\pm$   266 &      &         &       &   $\pm$   347 &      \\                
+stat &   5,179 & +20.2 &   4,824       & +0.7 &   4,877 & +13.2 &   5,116        & -0.4 \\
+%&         &       &  $\pm$   490 &      &         &       &   $\pm$   640 &      \\                    
+\hline     
+\totalcell{Total} & \totalcell{168,624} & \totalcell{+12.6} & \totalcell{162,574} & \totalcell{+1.4} & \totalcell{172,850} & \totalcell{+15.4} & \totalcell{175,221} & \totalcell{-0.4} \\
+% \pm 4{,}393
+% todo
 \hline 
     \end{tabular}
   \end{center}
 \end{table}
 
 
-
-
-
-
-
 The pandemic has also created distinct challenges when interpreting trends in \arxiv\ data. For example, there was a large spike in papers submitted to the \texttt{stat} category in June 2020 which one might assume was driven by COVID-related work given what we have observed in \texttt{q-bio}. However, the number of COVID-related papers posted in this period is modest (Figure~\ref{fig:2}), and the key factor appears to be delayed paper submission deadlines for two large conferences (NeurIPS and the Joint Statistical Meetings). Both conferences have had submission deadlines in mid-May in recent years, but in 2020, their deadlines were moved to early June.
 
 
 
-The COVID-19 pandemic appears to have had minimal impact on collective research productivity to date. In this study we have only focussed on the quantity of publications as a measure for productivity, and not their quality. While citations are the most used measure of impact of academic publications, that metric becomes a more biased statistic when many related pre-prints are all being posted nearly at the same time\cite{Fassin:2021}. 
-\add{Amongst individual fields the largest \emph{relative} decline in a single field is explanable by a high energy lattice physics conference that was cancelled in 2020.}
-\add{The largest persistent decline in pre-prints has occurred in physics, a field where many researchers rely on unfettered laboratory access to conduct careful experiments. As of mid-2022, this steady decline in physics pre-prints continues.}
-\del{Amongst individual fields the largest fractional decline is explainable by a cancelled conference, and the few other drops in pre-prints are statistically insignificant.}
-\del{It's plausible that many of the pre-prints already posted are research projects that were well underway before the pandemic.} The relatively long timescales of academic research would suggest that the full impact on academic productivity due to the COVID-19 pandemic is yet to be seen. The methodology and results presented here provide a quantitative framework for future investigations of the longer term impacts of the pandemic.
+The COVID-19 pandemic appears to have had minimal impact on collective research productivity to date.
+\add{However, some significant changes were noted within specific areas of research. The largest persistent decline in pre-prints has occurred in (primarily computational and applied) physics. As of mid-2022, this steady decline continues.} Amongst individual fields the largest \emph{relative} decline in a single field is explainable by a high energy lattice physics conference that was cancelled in 2020. In this study we have only focussed on the quantity of publications as a measure for productivity, and not their quality. While citations are the most used measure of impact of academic publications, that metric becomes a more biased statistic when many related pre-prints are all being posted nearly at the same time\cite{Fassin:2021}. The relatively long timescales of academic research would suggest that the full impact on academic productivity due to the COVID-19 pandemic is yet to be seen. The methodology and results presented here provide a quantitative framework for future investigations of the longer term impacts of the pandemic.
 
 
 \section*{Methods}
@@ -225,7 +256,7 @@ There are two primary ways that name confusion could impact our inferences. In t
 
 We have taken a simple approach to address name confusion. We first define a unique author by family name and the initial of the first given name (`Family-name, I.'), such that we intentionally group together authors that may share the same initial of their first given name. 
 While our approach to name confusion is grossly simple, it is unlikely that these choices have any substantial impact on our inferences. In general, this errs on the side of name conflation and over-productivity, except for the relatively rare authors who change their last names over their career.
-Any common name is likely to appear in the literature early in the data set and will not impact the conclusions we draw about how publishing changed in 2020. Indeed, we re-produced the analysis and figures in this paper by taking all initials given and it made no change to our conclusions. This is due, in part, to most authors not providing middle initials.
+Any common name is likely to appear in the literature early in the data set and will not impact the conclusions we draw about how publishing changed from 2020 January onwards. Indeed, we re-produced the analysis and figures in this paper by taking all initials given and it made no change to our conclusions. This is due, in part, to most authors not providing middle initials.
 
 
 \subsection*{Pre-prints related to the COVID-19 pandemic}
@@ -315,6 +346,12 @@ Guinnessy, P. (Physics Today). 2021. \emph{Physicists gathered virtually for APS
  
 \bibitem{LatticeConferenceWebsite}
 Helmholtz-Institut f\"ur Strahlen- und Kernphysik Indico Service (Indico). 2021. \emph{The 38th International Symposium on Lattice Field Theory (Lattice 2020)}. [online] Available at: {https://indico.hiskp.uni-bonn.de/event/1/} [Accessed 3 June 2021].
+
+\bibitem{LatticeConferenceWebsite2019}
+Helmholtz-Institut f\"ur Strahlen- und Kernphysik Indico Service (Indico). 2021. \emph{The 38th International Symposium on Lattice Field Theory (Lattice 2020)}. [online] Available at: {https://indico.cern.ch/event/764552/} [Accessed 20 June 2022].
+
+\bibitem{LatticeConferenceWebsite2021}
+Helmholtz-Institut f\"ur Strahlen- und Kernphysik Indico Service (Indico). 2021. \emph{The 38th International Symposium on Lattice Field Theory (Lattice 2021)}. [online] Available at: {https://indico.cern.ch/event/1006302/} [Accessed 20 June 2022].
 
 \bibitem{Wang:2017}
 {Wang, W., Bai, X., Xia, F. et al.}, {From triadic closure to conference closure: the role of academic conferences in promoting scientific collaborations.}, \emph{Scientometrics}, \textbf{113}, 177–193  doi:10.1007/s11192-017-2468-x \newblock (2017).]

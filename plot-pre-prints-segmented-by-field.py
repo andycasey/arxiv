@@ -69,7 +69,7 @@ else:
     print("WARNING: Using pre-determined counts")
 
 
-xlim = (2010, 2023)
+xlim = (2017, 2023)
 
 class LineModel(Model):
     parameter_names = ("m", "b")
@@ -86,6 +86,7 @@ num_preprints_var = np.zeros(shape)
 statistics = {}
 
 reports = []
+tabular_data = []
 
 fig, axes = plt.subplots(6, 3, figsize=(6, 8))
 assert len(axes.flat) >= len(ppcs)
@@ -175,7 +176,7 @@ for j, group in enumerate(records.group_by(["primary_parent_category"]).groups):
     )
 
     pred_as_bins = True
-    t_s, t_e = (2020, 2022.5)
+    t_s, t_e = (2020, 2023)
 
     if pred_as_bins:
         t_pred = np.arange(t_s + 0.5 * bin_width, t_e + 0.5 * bin_width, bin_width)
@@ -200,7 +201,7 @@ for j, group in enumerate(records.group_by(["primary_parent_category"]).groups):
             facecolor="tab:red",
             edgecolor=None,
             zorder=0,
-            alpha=1,
+            alpha=0.5,
             lw=0
         )
 
@@ -213,7 +214,8 @@ for j, group in enumerate(records.group_by(["primary_parent_category"]).groups):
         ax.plot(
             t_pred, y_pred,
             c="tab:red",
-            drawstyle="steps-mid",
+            #drawstyle="steps-mid",
+            lw=2,
             zorder=1
         )
 
@@ -221,7 +223,7 @@ for j, group in enumerate(records.group_by(["primary_parent_category"]).groups):
             t_pred,
             y_pred - np.sqrt(y_pred_var),
             y_pred + np.sqrt(y_pred_var),
-            step="mid",
+            #step="mid",
             facecolor="tab:red",
             edgecolor=None,
             zorder=0,
@@ -256,28 +258,43 @@ for j, group in enumerate(records.group_by(["primary_parent_category"]).groups):
         ax.plot(
             t_pred,
             y_pred_arima,
-            c="#666666",
-            lw=1,         
-            ls="-.",  
-            zorder=2
+            c="tab:blue",
+            lw=2,         
+            ls="-",  
+            zorder=-1
         )
 
     
     # Let's calculate some statistics.
+    N_preprints_in_2019 = np.sum(H[(2020 > bins[:-1]) * (bins[:-1] >= 2019)])
+
     N_preprints_in_2020 = np.sum(H[(2021 > bins[:-1]) * (bins[:-1] >= 2020)])
     pred_mask = (2021 > t_pred) * (t_pred >= 2020)
     N_predicted_in_2020 = np.sum(y_pred[pred_mask])
     
     u_pred_in_2020 = np.sum((y_pred + np.sqrt(y_pred_var))[pred_mask]) - N_predicted_in_2020
     
-    diff = (N_preprints_in_2020 - N_predicted_in_2020)/u_pred_in_2020
 
 
     N_preprints_in_2019 = np.sum(H[(2020 > bins[:-1]) * (bins[:-1] >= 2019)])
     percent_change = 100 * (N_preprints_in_2020/N_preprints_in_2019 - 1)
     print(f"{ppc} had {N_preprints_in_2020} pre-prints in 2020 (expected {N_predicted_in_2020:.0f}; {u_pred_in_2020:+.0f}, {u_pred_in_2020:.0f}), a {diff:+.1f} sigma deviation or {percent_change:+.1f}% change)")
     
-    reports.append(f"\\texttt{{{ppc: >50}}}  & {N_predicted_in_2020:,.0f} $\pm$ {u_pred_in_2020:,.0f} & {diff:+.1f}")
+    N_preprints_in_2021 = np.sum(H[(2022 > bins[:-1]) * (bins[:-1] >= 2021)])
+    percent_change_2021 = 100 * (N_preprints_in_2021/N_preprints_in_2019 - 1)
+    pred_mask_2021 = (2022 > t_pred) * (t_pred >= 2021)
+    N_predicted_in_2021 = np.sum(y_pred[pred_mask_2021])
+    u_pred_in_2021 = np.sum((y_pred + np.sqrt(y_pred_var))[pred_mask_2021]) - N_predicted_in_2021
+
+    diff_2020 = (N_preprints_in_2020 - N_predicted_in_2020)/u_pred_in_2020
+    diff_2021 = (N_preprints_in_2021 - N_predicted_in_2021)/u_pred_in_2021
+
+
+    tabular_data.append(
+        (ppc, N_preprints_in_2019, N_preprints_in_2020, percent_change, N_predicted_in_2020, u_pred_in_2020, diff_2020, N_preprints_in_2021, percent_change_2021, N_predicted_in_2021, u_pred_in_2021, diff_2021)
+    )
+
+    reports.append(f"\\texttt{{{ppc: >50}}}  & {N_predicted_in_2020:,.0f} $\pm$ {u_pred_in_2020:,.0f} & {diff_2020:+.1f}")
 
     statistics[ppc] = dict(
         N_preprints_in_2020=N_preprints_in_2020,
@@ -286,7 +303,7 @@ for j, group in enumerate(records.group_by(["primary_parent_category"]).groups):
         N_predicted_in_2020=N_predicted_in_2020,
         u_N_predicted_in_2020=u_pred_in_2020,
         pv=y_pred_var[pred_mask],
-        sigma_deviation=diff
+        sigma_deviation=diff_2020
     )
 
 
@@ -326,7 +343,7 @@ for ax in axes.flat:
     '''
 
 # Adjust y-limits so that they all start at zero, but we keep a nice aspect ratio.
-if True:#True:
+if False:#True:
     for ax in axes.flat:
         lims = ax.get_ylim()
         ptp = np.ptp(lims)
@@ -344,8 +361,58 @@ fig.text(
     rotation="vertical"
 )
 fig.tight_layout()
-fig.subplots_adjust(left=0.13)
+fig.subplots_adjust(left=0.13, hspace=0.2, wspace=0.4)
 
 plt.show()
 
 fig.savefig("article/pre-prints-segmented-by-field.pdf", dpi=300)
+
+
+from astropy.table import Table
+t = Table(
+    rows=tabular_data, 
+    names=(
+        "ppc", 
+        "2019_actual",
+        "2020_actual", "2020_change", "2020_predicted", "2020_predicted_uncertainty", "2020_sig", 
+        "2021_actual", "2021_change", "2021_predicted", "2021_predicted_uncertainty", "2021_sig"
+        )
+    )
+
+actual_total_2019 = np.sum(t["2019_actual"])
+actual_total_2020 = np.sum(t["2020_actual"])
+actual_total_2021 = np.sum(t["2021_actual"])
+
+
+t.add_row(
+    [
+        "Total", 
+        actual_total_2019,
+        actual_total_2020,
+        100 * (actual_total_2020/actual_total_2019 - 1),
+        np.sum(t["2020_predicted"]),
+        np.nan,
+        (actual_total_2020 - np.sum(t["2020_predicted"]))/np.sqrt(np.sum(t["2020_predicted_uncertainty"]**2)),
+        actual_total_2021,
+        100 * (actual_total_2021/actual_total_2019 - 1),
+        np.sum(t["2021_predicted"]),
+        np.nan,
+        (actual_total_2021 - np.sum(t["2021_predicted"]))/np.sqrt(np.sum(t["2021_predicted_uncertainty"]**2)),        
+    ]
+)
+
+for row in t[:-1]:
+    # {row['2019_actual']: >7,.0f}
+    print(
+        f"{row['ppc']: >10s} & {row['2020_actual']: >7,.0f} & {row['2020_change']: >+5.1f} & {row['2020_predicted']: >7,.0f} $\pm$ {row['2020_predicted_uncertainty']: >5,.0f} & {row['2020_sig']: >+4.1f} & "
+                             f"{row['2021_actual']: >7,.0f} & {row['2021_change']: >+5.1f} & {row['2021_predicted']: >7,.0f} $\pm$ {row['2021_predicted_uncertainty']: >5,.0f} & {row['2021_sig']: >+4.1f} \\\\"
+    )                        
+
+row = t[-1]
+print(
+    f"{row['ppc']: >10s} & {row['2020_actual']: >7,.0f} & {row['2020_change']: >+5.1f} & {row['2020_predicted']: >7,.0f} $\pm$ {row['2020_predicted_uncertainty']: >5,.0f} & {row['2020_sig']: >+4.1f} & "
+                            f"{row['2021_actual']: >7,.0f} & {row['2021_change']: >+5.1f} & {row['2021_predicted']: >7,.0f} $\pm$ {row['2021_predicted_uncertainty']: >5,.0f} & {row['2021_sig']: >+4.1f} \\\\"
+)                        
+
+
+
