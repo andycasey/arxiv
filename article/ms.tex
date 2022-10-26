@@ -21,6 +21,7 @@
 \newcommand{\del}[1]{\textcolor{red}{\sout{#1}}}
 \newcommand{\add}[1]{\textcolor{blue}{#1}}
 \newcommand{\todo}[1]{\textcolor{green}{#1}}
+\newcommand{\change}[1]{\textbf{#1}}
 
 %\newcommand{\del}[1]{}
 %\newcommand{\add}[1]{#1}
@@ -28,7 +29,8 @@
 \begin{document}
 
 %%%% Article title to be placed here
-\title{The impact of the COVID-19 pandemic on academic productivity}
+\title{\change{The effect of the COVID-19 pandemic on arXiv pre-prints in maths, physics, computer science, and quantitative biology}}
+
 
 \author{%%%% Author details
 A. R. Casey$^{1,2}$,  I. Mandel$^{1,3,4}$ and P. K. Ray$^{5}$}
@@ -69,7 +71,8 @@ Some of these `COVID papers' are by biologists using arXiv for the first time, b
 %%%%%%%%%% Insert the texts which can accomdate on firstpage in the tag "fmtext" %%%%%
 
 
-\noindent Peer-reviewed publications are the most common measure of productivity in academia. The \arxiv\cite{Ginsparg:2011} ({https://arxiv.org}) is a service for the distribution of research publications (pre-prints) prior to their appearance in a journal. The presence of a pre-print on \arxiv\ does not ensure that the contents have passed peer-review, but most material on \arxiv\ eventually goes through peer-review because it is now standard in many research fields to post to \arxiv\ either during or after the peer-review process \cite{Lariviere:2014}. For this reason, the number of pre-prints posted to \arxiv\ approximates the number of peer-reviewed publications written in these fields.
+\noindent Peer-reviewed publications are the most common measure of productivity in \change{many specialties of science and technology}. The \arxiv\cite{Ginsparg:2011} ({https://arxiv.org}) is a service for the distribution of research publications (pre-prints) prior to their appearance in a journal. The presence of a pre-print on \arxiv\ does not ensure that the contents have passed peer-review, but most material on \arxiv\ eventually goes through peer-review because it is now standard in many research specialties to post to \arxiv\ either during or after the peer-review process \cite{Lariviere:2014}. \change{The fraction of publications that are also posted to \arxiv\ increases each year but varies significantly by specialty, from 18.5\% in mathematics to nearly 100\% in high energy physics\cite{?,??}. 
+Not all academic outputs (peer-reviewed publications or otherwise) in a given research area will appear on \arxiv, but in the specialties we investigate here (physics, mathematics, and other STEM-related fields) the number of pre-prints posted on \arxiv\ is proportional to (a proxy measure of) the number of peer-reviwed publications in that area. For this reason, even if the proportionality differs between specialities of research, we can still examine changes per specialty as a function of time before and during the COVID-19 pandemic}.
 
 
 Here we make quantitative comparisons on the number of pre-prints posted to \arxiv\ before and during the pandemic. It is important to recognise that the pandemic has affected both the general population\cite{Nicola:2020,Chu:2020,IbnMohammed:2021} and scientific community\cite{Viglione:2020,Gewen:2020,King:2021} in complex and unequal ways. Scientists have faced substantial challenges driven by a large number of factors including: generational inequality, carer responsibilities, modified work environments, and other personal and professional circumstances. Our analysis does not directly consider these important factors, nor does it account for groups or individuals disproportionately affected by the pandemic. We have instead adopted a broad perspective and present new quantitative results for entire scientific fields. The aim is to provide a “large-scale” view of scientific productivity which will serve as a foundation for future studies on the detailed impacts of COVID-19 on academic work.
@@ -137,7 +140,7 @@ An increase in quantitative biology\footnote{Quantitative biology is only a sub-
 \end{figure}
 
 
-One quarter of the excess pre-prints posted to quantitative biology during 2020 were both related to the pandemic and written by authors who had never appeared in the quantitative biology literature (234 of the 876 excess pre-prints in \texttt{q-bio}). A careful examination reveals that about half of these (45\%; 107/234) were written by mathematicians or physicists, with another 26\% (61/234) led by engineers, computer scientists, or economists. These pre-prints tend to focus on modelling the COVID-19 outbreak using public data sets, rather than quantitative biology research that requires more expert domain knowledge. About 3\% (8/234) were led by established biologists who have not used the \arxiv\ before and are now doing so presumably to help ensure that their COVID-19 research is more widely available. This fraction is likely higher among pre-prints where at least one author has appeared before in the quantitative biology literature. This represents a genuine increase in new researchers using the \arxiv, and a boost to making quantitative biology research more widely accessible. 
+One quarter of the excess pre-prints posted to quantitative biology during 2020 were both related to the pandemic and written by authors who had never appeared in the quantitative biology literature (234 of the 876 excess pre-prints in \texttt{q-bio}). A careful examination \change{(see Methods)} reveals that about half of these (45\%; 107/234) were written by mathematicians or physicists, with another 26\% (61/234) led by engineers, computer scientists, or economists. These pre-prints tend to focus on modelling the COVID-19 outbreak using public data sets, rather than quantitative biology research that requires more expert domain knowledge. About 3\% (8/234) were led by established biologists who have not used the \arxiv\ before and are now doing so presumably to help ensure that their COVID-19 research is more widely available. This fraction is likely higher among pre-prints where at least one author has appeared before in the quantitative biology literature. This represents a genuine increase in new researchers using the \arxiv, and a boost to making quantitative biology research more widely accessible. 
 
 % What to say of the remaining 75%? 
 
@@ -257,12 +260,14 @@ We have taken a simple approach to address name confusion. We first define a uni
 While our approach to name confusion is grossly simple, it is unlikely that these choices have any substantial impact on our inferences. In general, this errs on the side of name conflation and over-productivity, except for the relatively rare authors who change their last names over their career.
 Any common name is likely to appear in the literature early in the data set and will not impact the conclusions we draw about how publishing changed from 2020 January onwards. Indeed, we re-produced the analysis and figures in this paper by taking all initials given and it made no change to our conclusions. This is due, in part, to most authors not providing middle initials.
 
-
 \subsection*{Pre-prints related to the COVID-19 pandemic}
 
 We identified a pre-print as being related to the COVID-19 pandemic if the title or abstract contained any of the following four (case-insensitive) terms: `pandemic', `COVID', `SARS-CoV-2', `lockdown', or `coronavirus'. Before 2020, these terms rarely appear in the title or abstract of any pre-print on \arxiv\ (Figure~\ref{fig:2}).
 
 
+\subsection*{Identifying research specialisations of pandemic-related pre-prints posted by new authors in \texttt{q-bio}}
+
+\change{There were 234 pre-prints posted to the \texttt{q-bio} primary category in 2020 which include pandemic-related terms, and where the lead author had never before appeared on the \texttt{q-bio} pre-print before. We investigated every pre-print to extract the affiliation of those authors, and used this information to search the internet for the author's website. From this information we identified their research specialisations using their own words, or from their social media pages if no website could be found. In situations where an author's specialisation crossed multiple fields (e.g., mathematics and biology) we took a conservative approach and described the author as a biologist. However, we found that only 3\% (8/234) were led by established biologists who had not appeared in \texttt{q-bio} pre-prints before. About half (45\%; 107/234) were written by mathematicians or physicists, with another 26\% (61/234) led by engineers, computer scientists, or economists.}
 
 
 \vspace{\fill}
